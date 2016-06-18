@@ -124,9 +124,9 @@ exports.svgstore = {
     };
 
     test.equal(
-        minify(actual, minificationOptions),
-        minify(expected, minificationOptions),
-        'should have created a valid demo html'
+      minify(actual, minificationOptions),
+      minify(expected, minificationOptions),
+      'should have created a valid demo html'
     );
     test.done();
   },
