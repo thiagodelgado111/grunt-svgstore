@@ -74,7 +74,8 @@ module.exports = function(grunt) {
       formatting: {
         options: {
           formatting : {
-            indent_size : 2
+            collapseWhitespace: true,
+            minifyCSS: true
           }
         },
         files: {
@@ -101,7 +102,7 @@ module.exports = function(grunt) {
           includedemo : true
         },
         files: {
-          'tmp/includedemo.svg': ['test/fixtures/*.svg', 'test/fixtures/animation/anim.svg']
+          'tmp/includedemo.svg': ['test/fixtures/animation/anim.svg', 'test/fixtures/*.svg']
         }
       },
 

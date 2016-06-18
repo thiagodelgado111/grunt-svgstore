@@ -12,7 +12,7 @@ module.exports = function (grunt) {
   var multiline = require('multiline');
   var path = require('path');
 
-  var beautify = require('js-beautify').html;
+  var minify = require('html-minifier').minify;
   var cheerio = require('cheerio');
   var chalk = require('chalk');
   var handlebars = require('handlebars');
@@ -97,7 +97,7 @@ module.exports = function (grunt) {
         $resultSvg.attr(attr, options.svg[attr]);
       }
 
-      file.src.filter(function (filepath) {
+      file.src.sort().filter(function (filepath) {
         if (!grunt.file.exists(filepath)) {
           grunt.log.warn('File "' + filepath + '" not found.');
           return false;
@@ -372,11 +372,10 @@ module.exports = function (grunt) {
         $resultDefs.remove();
       }
 
-      var result = options.formatting ? beautify($resultDocument.html(), options.formatting) : $resultDocument.html();
+      var result = options.formatting ? minify($resultDocument.html(), options.formatting) : $resultDocument.html();
       var destName = path.basename(file.dest, '.svg');
 
       grunt.file.write(file.dest, result);
-
       grunt.log.writeln('File ' + chalk.cyan(file.dest) + ' created.');
 
       if (!!options.includedemo) {

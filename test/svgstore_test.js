@@ -76,7 +76,7 @@ exports.svgstore = {
 
     var actual = grunt.file.read('tmp/formatting.svg');
     var expected = grunt.file.read('test/expected/formatting.svg');
-   // test.equal(actual, expected, 'should add formatting');
+    test.equal(actual, expected, 'should add formatting');
 
     test.done();
   },
@@ -124,9 +124,9 @@ exports.svgstore = {
     };
 
     test.equal(
-        minify(actual, minificationOptions),
-        minify(expected, minificationOptions),
-       'should have created a valid demo html'
+      minify(actual, minificationOptions),
+      minify(expected, minificationOptions),
+      'should have created a valid demo html'
     );
     test.done();
   },
